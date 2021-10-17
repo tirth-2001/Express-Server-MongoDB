@@ -25,5 +25,5 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const collectionName = "LearnUser";
+const collectionName = "User";
 module.exports = mongoose.model("User", userSchema, collectionName);
