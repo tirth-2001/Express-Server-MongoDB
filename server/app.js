@@ -12,6 +12,9 @@ const DB_URL =
 
 const app = express();
 
+app.use(cors());
+app.use(bodyParser.json());
+
 app.get("/alive", alive);
 
 app.get("/ping", ping);

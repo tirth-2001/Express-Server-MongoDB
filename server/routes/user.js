@@ -6,9 +6,13 @@ const {
   getUser,
   getUserById,
   getUserByQuery,
+  createUser,
+  updateUser,
+  deleteUser,
 } = require("../controllers/user");
 
 router.param("id", getUserById);
+router.param("email", getUserByQuery);
 
 // GET /users
 router.get("/users", getAllUsers);
@@ -19,6 +23,13 @@ router.get("/user/query", getUserByQuery);
 // GET /user/:id
 router.get("/user/:id", getUser);
 
-// POST
+// POST /user/create
+router.post("/user/create", createUser);
+
+// PUT /user/:id
+router.put("/user/:id", updateUser);
+
+// DELETE /user/:id
+router.delete("/user/:id", deleteUser);
 
 module.exports = router;
