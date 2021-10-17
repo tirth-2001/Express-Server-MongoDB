@@ -12,12 +12,22 @@ const DB_URL =
 
 const app = express();
 
+const port = 8000 || process.env.PORT;
+
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});
+
 app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/alive", alive);
 
 app.get("/ping", ping);
+
+app.get("/check", (req, res) => {
+  res.send("Server is running");
+});
 
 mongoose.connect(
   DB_URL,
@@ -36,9 +46,3 @@ mongoose.connect(
 
 // Mount routes
 app.use("/api", userRoutes);
-
-const port = 8000 || process.env.PORT;
-
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
-});
